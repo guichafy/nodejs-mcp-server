@@ -1,0 +1,32 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "production_url",
+      "description": "URL do servidor MCP em produção",
+      "default": "https://seu-servidor.herokuapp.com"
+    }
+  ],
+  "servers": {
+    "mcp-http-production": {
+      "type": "http",
+      "url": "${input:production_url}/mcp/v1",
+      "description": "Servidor MCP HTTP em Produção",
+      "headers": {
+        "Content-Type": "application/json",
+        "User-Agent": "VSCode-MCP-Client/1.0"
+      },
+      "requestInit": {
+        "timeout": 10000,
+        "keepAlive": true
+      }
+    }
+  },
+  "toolsets": [
+    {
+      "name": "number-generation",
+      "description": "Ferramentas para geração de números",
+      "tools": ["generateRandomNumber"]
+    }
+  ]
+}

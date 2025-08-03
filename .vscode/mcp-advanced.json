@@ -1,0 +1,30 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "server_url",
+      "description": "URL do servidor MCP HTTP",
+      "default": "http://localhost:3000"
+    },
+    {
+      "type": "promptString",
+      "id": "api_key",
+      "description": "Chave de API (opcional)",
+      "password": true
+    }
+  ],
+  "servers": {
+    "my-mcp-http-server": {
+      "type": "http",
+      "url": "${input:server_url}/mcp/v1",
+      "description": "Servidor MCP HTTP Personalizado",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer ${input:api_key}"
+      },
+      "requestInit": {
+        "timeout": 30000
+      }
+    }
+  }
+}
